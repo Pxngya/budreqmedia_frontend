@@ -13,7 +13,7 @@ const Login = ({ onLoginSuccess }) => {
   const handleCheckId = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:8000/check-user', { employee_id: empId });
+      const res = await axios.post('https://reqmedia-backend.vercel.app/check-user', { employee_id: empId });
       if (res.data.exists) setStep('password');
       else setStep('register');
       setError('');
@@ -23,7 +23,7 @@ const Login = ({ onLoginSuccess }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:8000/login', { employee_id: empId, password });
+      const res = await axios.post('https://reqmedia-backend.vercel.app/login', { employee_id: empId, password });
       onLoginSuccess(res.data);
     } catch (err) { setError('รหัสผ่านไม่ถูกต้อง'); }
   };
@@ -31,7 +31,7 @@ const Login = ({ onLoginSuccess }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:8000/register', { 
+      await axios.post('https://reqmedia-backend.vercel.app/register', { 
         employee_id: empId, fullname, password, department 
       });
       alert('ลงทะเบียนพนักงานใหม่สำเร็จ!');
